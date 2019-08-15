@@ -8,7 +8,7 @@ const SearchCity = ({ onSubmit }) => {
 
     const submitForm = e => {
         e.preventDefault();
-        console.log(searchText);
+        onSubmit(searchText);
     };
 
     const handleTextChange = e => {
