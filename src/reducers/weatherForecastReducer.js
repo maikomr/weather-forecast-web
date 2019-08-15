@@ -4,7 +4,7 @@ import {
     FETCH_WEATHER_FORECAST_FAILURE
 } from '../constants/weatherForecastConstants';
 
-const initialState = {
+export const initialState = {
     weatherForecast: null,
     loading: false,
     error: null
