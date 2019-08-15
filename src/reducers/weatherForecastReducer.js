@@ -2,7 +2,7 @@ import {
     FETCH_WEATHER_FORECAST_START,
     FETCH_WEATHER_FORECAST_SUCCESS,
     FETCH_WEATHER_FORECAST_FAILURE
-} from '../constants/weatherForecastConstants';
+} from '../constants/actionTypes';
 
 export const initialState = {
     weatherForecast: null,

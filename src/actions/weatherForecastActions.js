@@ -4,7 +4,7 @@ import {
     FETCH_WEATHER_FORECAST_START,
     FETCH_WEATHER_FORECAST_SUCCESS,
     FETCH_WEATHER_FORECAST_FAILURE
-} from '../constants/weatherForecastConstants';
+} from '../constants/actionTypes';
 
 const OPEN_WEATHER_API_KEY = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
 const FIVE_DAYS_URL = process.env.REACT_APP_FIVE_DAYS_URL;
@@ -23,7 +23,7 @@ export const fetchWeatherForecastFailure = error => ({
     payload: { error }
 });
 
-export const fetchWeather = cityName => async dispatch => {
+export const fetchWeatherForecast = cityName => async dispatch => {
     dispatch(fetchWeatherForecastStart());
     const queryParams = queryString.stringify({
         q: cityName,

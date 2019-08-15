@@ -1,23 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import SearchCity from './components/SearchCity';
-import { fetchWeather } from './actions/weatherForecastActions';
+import { fetchWeatherForecast } from './actions/weatherForecastActions';
 
 import './App.scss';
 
-const App = ({ fetchWeather, weatherForecast }) => {
-  console.log(weatherForecast);
-  return (
-    <div className="App">
-      <SearchCity onSubmit={fetchWeather} />
-    </div>
-  );
+const App = ({ fetchWeatherForecast, weatherForecast }) => {
+    console.log(weatherForecast);
+    return (
+        <div className="App">
+            <SearchCity onSubmit={fetchWeatherForecast} />
+        </div>
+    );
 }
 
 const mapStateToProps = (state) => ({
-  weatherForecast: state.weatherForecast
+    weatherForecast: state.weatherForecast
 });
 
-const mapDispatchToProps = { fetchWeather };
+const mapDispatchToProps = { fetchWeatherForecast };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
