@@ -1,4 +1,5 @@
 import axios from 'axios';
+import queryString from 'query-string';
 import {
     FETCH_WEATHER_FORECAST_START,
     FETCH_WEATHER_FORECAST_SUCCESS,
@@ -24,7 +25,12 @@ export const fetchWeatherForecastFailure = error => ({
 
 export const fetchWeather = cityName => async dispatch => {
     dispatch(fetchWeatherForecastStart());
-    const url = `${FIVE_DAYS_URL}?q=${cityName}&units=metric&appid=${OPEN_WEATHER_API_KEY}`;
+    const queryParams = queryString.stringify({
+        q: cityName,
+        units: 'metric',
+        appid: OPEN_WEATHER_API_KEY
+    });
+    const url = `${FIVE_DAYS_URL}?${queryParams}`;
     try {
         const response = await axios(url);
         const weatherForecast = response.data;
