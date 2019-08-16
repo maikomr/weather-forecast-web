@@ -21,7 +21,7 @@ const stringifyDate = date => {
 };
 
 const Forecast = ({ forecast: { date, highTemp, lowTemp, overallWeather }, units }) => (
-    <Card className="text-center">
+    <Card className="text-center forecast">
         <Card.Body>
             <Card.Text>
                 <img className="temp-icon" src={highTempIcon} alt="High temperature" />&nbsp;

@@ -1,12 +1,31 @@
-.temp-icon {
-    height: 0.8em;
-    width: 0.8em;
-}
+.forecast {
+    .temp-icon {
+        height: 0.8em;
+        width: 0.8em;
+    }
+    
+    .high-temp {
+        color: orangered;
+    }
+    
+    .low-temp {
+        color: skyblue;
+    }
 
-.high-temp {
-    color: orangered;
-}
+    opacity: 0;
+    
+    -moz-animation: appear 1s 0.2s forwards;
+    -o-animation: appear 1s 0.2s forwards;
+    animation: appear 1s 0.2s forwards;
 
-.low-temp {
-    color: skyblue;
+    @keyframes appear {
+        
+        0% {
+          opacity: 0;
+        }
+
+        100% {
+          opacity: 1;
+        }
+    }
 }
