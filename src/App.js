@@ -5,18 +5,18 @@ import SearchCity from './components/SearchCity';
 import DailyForecast from './components/DailyForecast';
 import Welcome from './components/Welcome';
 import CityNotFound from './components/CityNotFound';
-import { fetchWeatherForecast } from './actions/weatherForecastActions';
+import { fetchWeatherForecast, setUnits } from './actions/weatherForecastActions';
 
 import './App.scss';
 
-const App = ({ fetchWeatherForecast, weatherForecast }) => {
-    const { dailyForecast, error } = weatherForecast;
+const App = ({ fetchWeatherForecast, weatherForecast, setUnits }) => {
+    const { dailyForecast, error, units } = weatherForecast;
     const currentYear = new Date().getFullYear();
     return (
         <div className="App">
             <Navbar bg="dark" variant="dark">
                 <Navbar.Brand>Weather Forecast</Navbar.Brand>
-                <SearchCity onSubmit={fetchWeatherForecast} />
+                <SearchCity units={units} onSubmit={fetchWeatherForecast} onUnitsChange={setUnits} />
             </Navbar>
             <Container>
                 <Row className="justify-content-md-center">
@@ -41,5 +41,5 @@ const App = ({ fetchWeatherForecast, weatherForecast }) => {
 };
 
 const mapStateToProps = state => state;
-const mapDispatchToProps = { fetchWeatherForecast };
+const mapDispatchToProps = { fetchWeatherForecast, setUnits };
 export default connect(mapStateToProps, mapDispatchToProps)(App);

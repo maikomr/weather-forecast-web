@@ -1,14 +1,17 @@
 import {
     FETCH_WEATHER_FORECAST_START,
     FETCH_WEATHER_FORECAST_SUCCESS,
-    FETCH_WEATHER_FORECAST_FAILURE
+    FETCH_WEATHER_FORECAST_FAILURE,
+    SET_TEMPERATURE_UNITS
 } from '../constants/actionTypes';
+import { UNITS } from '../constants/units';
 
 export const initialState = {
     dailyForecast: null,
     loading: false,
     city: null,
-    error: null
+    error: null,
+    units: UNITS.FAHRENHEIT
 };
 
 const MID_DAY_TIME = '12:00:00';
@@ -56,9 +59,11 @@ const weatherForecastReducer = (state = initialState, action) => {
         case FETCH_WEATHER_FORECAST_SUCCESS:
             const { city, list } = action.payload.weatherForecast;
             const dailyForecast = getDailyForecast(list);
-            return { ...state, dailyForecast, loading: false, city };
+            return { ...state, loading: false, dailyForecast, city };
         case FETCH_WEATHER_FORECAST_FAILURE:
             return { ...initialState, error: action.payload.error };
+        case SET_TEMPERATURE_UNITS:
+            return { ...state, units: action.payload.units };
         default:
             return state;
     }

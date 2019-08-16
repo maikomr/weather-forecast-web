@@ -3,7 +3,8 @@ import queryString from 'query-string';
 import {
     FETCH_WEATHER_FORECAST_START,
     FETCH_WEATHER_FORECAST_SUCCESS,
-    FETCH_WEATHER_FORECAST_FAILURE
+    FETCH_WEATHER_FORECAST_FAILURE,
+    SET_TEMPERATURE_UNITS
 } from '../constants/actionTypes';
 
 const OPEN_WEATHER_API_KEY = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
@@ -23,11 +24,12 @@ export const fetchWeatherForecastFailure = error => ({
     payload: { error }
 });
 
-export const fetchWeatherForecast = cityName => async dispatch => {
+export const fetchWeatherForecast = (cityName) => async (dispatch, getState) => {
     dispatch(fetchWeatherForecastStart());
+    const { units } = getState().weatherForecast;
     const queryParams = queryString.stringify({
         q: cityName,
-        units: 'metric',
+        units,
         appid: OPEN_WEATHER_API_KEY
     });
     const url = `${FIVE_DAYS_URL}?${queryParams}`;
@@ -39,3 +41,8 @@ export const fetchWeatherForecast = cityName => async dispatch => {
         dispatch(fetchWeatherForecastFailure(exception));
     }
 };
+
+export const setUnits = units => ({
+    type: SET_TEMPERATURE_UNITS,
+    payload: { units }
+});

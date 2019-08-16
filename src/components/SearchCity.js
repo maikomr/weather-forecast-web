@@ -2,24 +2,19 @@ import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Button, Form, FormControl, InputGroup, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
+import { UNITS } from '../constants/units';
 
-const UNITS = {
-    FAHRENHEIT: 'imperial',
-    CELCIUS: 'metric',
-};
-
-const SearchCity = ({ onSubmit }) => {
+const SearchCity = ({ onSubmit, units, onUnitsChange }) => {
     const searchText = React.createRef();
-    const units = React.createRef();
 
     const submitForm = e => {
         e.preventDefault();
-        onSubmit(searchText.current.value, units.current.value);
+        onSubmit(searchText.current.value);
     };
 
     return (
         <Form onSubmit={submitForm} inline className="ml-auto">
-            <ToggleButtonGroup ref={units} type="radio" name="options" defaultValue={UNITS.FAHRENHEIT}>
+            <ToggleButtonGroup type="radio" name="options" value={units} onChange={onUnitsChange}>
                 <ToggleButton value={UNITS.FAHRENHEIT} variant="light">°F</ToggleButton>
                 <ToggleButton value={UNITS.CELCIUS} variant="light">°C</ToggleButton>
             </ToggleButtonGroup>
