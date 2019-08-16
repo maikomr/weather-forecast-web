@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Navbar, Row, Col } from 'react-bootstrap';
 import SearchCity from './components/SearchCity';
 import DailyForecast from './components/DailyForecast';
 import Welcome from './components/Welcome';
@@ -11,23 +11,23 @@ import './App.scss';
 const App = ({ fetchWeatherForecast, weatherForecast }) => {
     const { dailyForecast } = weatherForecast;
     return (
-        <Container className="App">
-            <Row className="justify-content-md-center">
-                <Col xs lg="4">
-                    <SearchCity onSubmit={fetchWeatherForecast} />
-                </Col>
-            </Row>
-            <Row className="justify-content-md-center">
-                <Col xs lg="6">
-                    {!dailyForecast && <Welcome />}
-                </Col>
-            </Row>
-            <Row className="justify-content-md-center">
-                <Col xs>
-                    {dailyForecast && <DailyForecast dailyForecast={dailyForecast} />}
-                </Col>
-            </Row>
-        </Container>
+        <div>
+            <Navbar bg="dark" variant="dark">
+                <SearchCity onSubmit={fetchWeatherForecast} />
+            </Navbar>
+            <Container className="App">
+                <Row className="justify-content-md-center">
+                    <Col xs lg="6">
+                        {!dailyForecast && <Welcome />}
+                    </Col>
+                </Row>
+                <Row className="justify-content-md-center">
+                    <Col xs>
+                        {dailyForecast && <DailyForecast dailyForecast={dailyForecast} />}
+                    </Col>
+                </Row>
+            </Container>
+        </div>
     );
 };
 
