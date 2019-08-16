@@ -5,9 +5,33 @@ import {
 } from '../constants/actionTypes';
 
 export const initialState = {
-    weatherForecast: null,
+    dailyForecast: null,
     loading: false,
+    city: null,
     error: null
+};
+
+const MID_DAY_TIME = '12:00:00';
+
+const getDailyForecast = records => {
+    const dailyForecast = {};
+    records.forEach(({ dt_txt, main: { temp }, weather }) => {
+        const [ date, time ] = dt_txt.split(' ');
+        if (dailyForecast.hasOwnProperty(date)) {
+            const currentDay = dailyForecast[date];
+            currentDay.lowTemp = Math.min(currentDay.lowTemp, temp);
+            currentDay.highTemp = Math.max(currentDay.highTemp, temp);
+            if (time === MID_DAY_TIME) {
+                currentDay.overallWeather = weather[0];
+            }
+        } else {
+            dailyForecast[date] = {
+                lowTemp: temp,
+                highTemp: temp
+            };
+        }
+    });
+    return dailyForecast;
 };
 
 const weatherForecastReducer = (state = initialState, action) => {
@@ -15,7 +39,9 @@ const weatherForecastReducer = (state = initialState, action) => {
         case FETCH_WEATHER_FORECAST_START:
             return { ...state, loading: true };
         case FETCH_WEATHER_FORECAST_SUCCESS:
-            return { ...state, loading: false, weatherForecast: action.payload.weatherForecast };
+            const { city, list } = action.payload.weatherForecast;
+            const dailyForecast = getDailyForecast(list);
+            return { ...state, dailyForecast, loading: false, city };
         case FETCH_WEATHER_FORECAST_FAILURE:
             return { ...initialState, error: action.payload.error };
         default:

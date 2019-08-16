@@ -12,12 +12,8 @@ const App = ({ fetchWeatherForecast, weatherForecast }) => {
             <SearchCity onSubmit={fetchWeatherForecast} />
         </div>
     );
-}
+};
 
-const mapStateToProps = (state) => ({
-    weatherForecast: state.weatherForecast
-});
-
+const mapStateToProps = state => state;
 const mapDispatchToProps = { fetchWeatherForecast };
-
 export default connect(mapStateToProps, mapDispatchToProps)(App);

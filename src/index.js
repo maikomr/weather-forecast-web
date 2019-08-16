@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { compose, applyMiddleware, createStore } from 'redux';
+import { compose, applyMiddleware, createStore, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import App from './App';
 
@@ -12,7 +12,8 @@ import './index.scss';
 import weatherForecastReducer from './reducers/weatherForecastReducer';
 
 const middleware = applyMiddleware(thunk);
-let store = compose(createStore)(weatherForecastReducer, middleware);
+const rootReducer = combineReducers({ weatherForecast: weatherForecastReducer });
+const store = compose(createStore)(rootReducer, middleware);
 
 const root = (
     <Provider store={store}>
