@@ -1,3 +1,11 @@
-.App {
+html, body {
+    height: 100%
+}
+
+.container {
     margin-top: 20vh;
+
+    .footer {
+        margin-top: 20vh;
+    }
 }

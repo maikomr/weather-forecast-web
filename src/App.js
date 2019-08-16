@@ -10,12 +10,13 @@ import './App.scss';
 
 const App = ({ fetchWeatherForecast, weatherForecast }) => {
     const { dailyForecast } = weatherForecast;
+    const currentYear = new Date().getFullYear();
     return (
-        <div>
+        <div className="App">
             <Navbar bg="dark" variant="dark">
                 <SearchCity onSubmit={fetchWeatherForecast} />
             </Navbar>
-            <Container className="App">
+            <Container>
                 <Row className="justify-content-md-center">
                     <Col xs lg="6">
                         {!dailyForecast && <Welcome />}
@@ -24,6 +25,11 @@ const App = ({ fetchWeatherForecast, weatherForecast }) => {
                 <Row className="justify-content-md-center">
                     <Col xs>
                         {dailyForecast && <DailyForecast dailyForecast={dailyForecast} />}
+                    </Col>
+                </Row>
+                <Row className="text-center footer">
+                    <Col xs>
+                        <p>&copy; {currentYear} Maiko Morales</p>
                     </Col>
                 </Row>
             </Container>
