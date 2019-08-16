@@ -4,7 +4,7 @@ import { Card } from 'react-bootstrap';
 const WEATHER_ICONS_URL = process.env.REACT_APP_WEATHER_ICONS_URL;
 
 const Forecast = ({ forecast: { date, highTemp, lowTemp, overallWeather } }) => (
-    <Card>
+    <Card className="text-center">
         <Card.Body>
             <Card.Text>
                 <strong>{`${highTemp}°C`}</strong> | {`${lowTemp}°C`}
