@@ -4,7 +4,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Button, Form, FormControl, InputGroup, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 import { UNITS } from '../constants/units';
 
-const SearchCity = ({ onSubmit, units, onUnitsChange }) => {
+const SearchBar = ({ onSubmit, units, onUnitsChange }) => {
     const searchText = React.createRef();
 
     const submitForm = e => {
@@ -30,4 +30,4 @@ const SearchCity = ({ onSubmit, units, onUnitsChange }) => {
     );
 };
 
-export default SearchCity;
+export default SearchBar;

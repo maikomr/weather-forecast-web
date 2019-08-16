@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Container, Navbar, Row, Col } from 'react-bootstrap';
-import SearchCity from './components/SearchCity';
+import SearchBar from './components/SearchBar';
 import DailyForecast from './components/DailyForecast';
 import Welcome from './components/Welcome';
 import CityNotFound from './components/CityNotFound';
@@ -19,7 +19,7 @@ const App = ({ fetchWeatherForecast, weatherForecast, fetchUnitsIfNeeded }) => {
         <div className="App">
             <Navbar bg="dark" variant="dark">
                 <Navbar.Brand href="/">Weather Forecast</Navbar.Brand>
-                <SearchCity units={units} onSubmit={fetchWeatherForecast} onUnitsChange={fetchUnitsIfNeeded} />
+                <SearchBar units={units} onUnitsChange={fetchUnitsIfNeeded} onSubmit={fetchWeatherForecast} />
             </Navbar>
             <Container>
                 <Row className="justify-content-md-center">
