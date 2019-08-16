@@ -2,8 +2,6 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import { UNIT_SYMBOLS } from '../constants/units';
 
-const WEATHER_ICONS_URL = process.env.REACT_APP_WEATHER_ICONS_URL;
-
 const isToday = date => {
     const today = new Date();
     return date.getDate() === today.getDate() 
@@ -27,7 +25,7 @@ const Forecast = ({ forecast: { date, highTemp, lowTemp, overallWeather }, units
                 {`${lowTemp}${UNIT_SYMBOLS[units]}`}
             </Card.Text>
             <Card.Img
-                src={`${WEATHER_ICONS_URL}/${overallWeather.icon.replace('n', 'd')}@2x.png`}
+                src={`/forecast-icons/${overallWeather.icon.replace('n', 'd')}.svg`}
                 alt={overallWeather.description}
             />
             <Card.Text className="text-muted">

@@ -39,6 +39,28 @@ const App = ({ fetchWeatherForecast, weatherForecast, setUnits }) => {
                 <Row className="text-center footer">
                     <Col xs>
                         <p>&copy; {currentYear} Maiko Morales</p>
+                        <div className="attribution">
+                            Station icon made by&nbsp;
+                            <a href="https://www.flaticon.com/authors/flat-icons"
+                                title="Flat Icons">Flat Icons</a> 
+                            &nbsp;from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+                            &nbsp;is licensed by&nbsp;
+                            <a href="http://creativecommons.org/licenses/by/3.0/"
+                                title="Creative Commons BY 3.0"
+                                target="_blank"
+                                rel="noopener noreferrer">CC 3.0 BY</a>
+                        </div>
+                        <div className="attribution">
+                            Weather icons made by&nbsp;
+                            <a href="https://www.flaticon.com/authors/linector"
+                                title="Linector">Linector</a> 
+                            &nbsp;from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+                            &nbsp;is licensed by&nbsp;
+                            <a href="http://creativecommons.org/licenses/by/3.0/"
+                                title="Creative Commons BY 3.0"
+                                target="_blank"
+                                rel="noopener noreferrer">CC 3.0 BY</a>
+                        </div>
                     </Col>
                 </Row>
             </Container>
