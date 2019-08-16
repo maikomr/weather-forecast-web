@@ -1,12 +1,13 @@
 import React from 'react';
+import { CardDeck } from 'react-bootstrap';
 import Forecast from './Forecast';
 
 const DailyForecast = ({ dailyForecast = [] }) => (
-    <div>
+    <CardDeck>
         {dailyForecast.map(forecast => (
             <Forecast key={forecast.date} forecast={forecast} />
         ))}
-    </div>
+    </CardDeck>
 );
 
 export default DailyForecast;
