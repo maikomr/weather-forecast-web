@@ -4,12 +4,13 @@ import { Container, Navbar, Row, Col } from 'react-bootstrap';
 import SearchCity from './components/SearchCity';
 import DailyForecast from './components/DailyForecast';
 import Welcome from './components/Welcome';
+import CityNotFound from './components/CityNotFound';
 import { fetchWeatherForecast } from './actions/weatherForecastActions';
 
 import './App.scss';
 
 const App = ({ fetchWeatherForecast, weatherForecast }) => {
-    const { dailyForecast } = weatherForecast;
+    const { dailyForecast, error } = weatherForecast;
     const currentYear = new Date().getFullYear();
     return (
         <div className="App">
@@ -19,7 +20,8 @@ const App = ({ fetchWeatherForecast, weatherForecast }) => {
             <Container>
                 <Row className="justify-content-md-center">
                     <Col xs lg="6">
-                        {!dailyForecast && <Welcome />}
+                        {!dailyForecast && !error && <Welcome />}
+                        {!dailyForecast && error && error.message.includes('404') && <CityNotFound />}
                     </Col>
                 </Row>
                 <Row className="justify-content-md-center">
