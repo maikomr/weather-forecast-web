@@ -1,0 +1,9 @@
+.loading {
+    .text-primary {
+        color: #79A9D1 !important;
+    }
+
+    :not(:last-child) {
+        margin-right: 1em;
+    }
+}

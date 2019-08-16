@@ -50,7 +50,7 @@ const weatherForecastReducer = (state = initialState, action) => {
         case FETCH_WEATHER_FORECAST_SUCCESS:
             const { city, list } = action.payload.weatherForecast;
             const dailyForecast = getDailyForecast(list);
-            return { ...state, loading: false, dailyForecast, city };
+            return { ...state, loading: false, dailyForecast, city, error: null };
         case FETCH_WEATHER_FORECAST_FAILURE:
             return { ...initialState, error: action.payload.error };
         case SET_TEMPERATURE_UNITS:
