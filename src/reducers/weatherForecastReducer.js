@@ -14,8 +14,6 @@ export const initialState = {
     units: UNITS.FAHRENHEIT
 };
 
-const MID_DAY_TIME = '12:00:00';
-
 const takeFirstFiveElements = arr => arr.splice(0, 5);
 
 const convertObjectForecastToArray = dailyForecastObj => {
@@ -31,22 +29,15 @@ const evaluateHighAndLowTemp = (currentDay, temp) => {
     currentDay.highTemp = Math.max(currentDay.highTemp, temp);
 };
 
-const evaluateOveralWeather = (time, currentDay, weather) => {
-    if (time === MID_DAY_TIME) {
-        currentDay.overallWeather = weather[0];
-    }
-};
-
 const getDailyForecast = records => {
     const dailyForecastObj = {};
     records.forEach(({ dt_txt, main: { temp }, weather }) => {
-        const [ date, time ] = dt_txt.split(' ');
+        const date = dt_txt.split(' ')[0];
         if (dailyForecastObj.hasOwnProperty(date)) {
             const currentDay = dailyForecastObj[date];
             evaluateHighAndLowTemp(currentDay, temp);
-            evaluateOveralWeather(time, currentDay, weather);
         } else {
-            dailyForecastObj[date] = { lowTemp: temp, highTemp: temp };
+            dailyForecastObj[date] = { lowTemp: temp, highTemp: temp, overallWeather: weather[0] };
         }
     });
     return convertObjectForecastToArray(dailyForecastObj);

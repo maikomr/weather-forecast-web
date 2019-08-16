@@ -27,7 +27,7 @@ const App = ({ fetchWeatherForecast, weatherForecast, setUnits }) => {
                 </Row>
                 <Row className="justify-content-md-center">
                     <Col xs>
-                        {dailyForecast && <DailyForecast dailyForecast={dailyForecast} />}
+                        {dailyForecast && <DailyForecast dailyForecast={dailyForecast} units={units} />}
                     </Col>
                 </Row>
                 <Row className="text-center footer">

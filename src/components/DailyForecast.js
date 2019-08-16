@@ -2,10 +2,10 @@ import React from 'react';
 import { CardDeck } from 'react-bootstrap';
 import Forecast from './Forecast';
 
-const DailyForecast = ({ dailyForecast = [] }) => (
+const DailyForecast = ({ dailyForecast = [], units }) => (
     <CardDeck>
         {dailyForecast.map(forecast => (
-            <Forecast key={forecast.date} forecast={forecast} />
+            <Forecast key={forecast.date} forecast={forecast} units={units} />
         ))}
     </CardDeck>
 );

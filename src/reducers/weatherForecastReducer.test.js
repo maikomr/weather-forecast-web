@@ -25,7 +25,7 @@ describe('weatherForecastReducer', () => {
         const weatherForecast = { code: 200, city, list };
         const newState = weatherForecastReducer(undefined, fetchWeatherForecastSuccess(weatherForecast));
         const expectedDailyForecast = [
-            { date: '2019-08-15', highTemp: 20.08, lowTemp: 8.2, overallWeather: { id: 700 } }
+            { date: '2019-08-15', highTemp: 20.08, lowTemp: 8.2, overallWeather: { id: 804 } }
         ];
         expect(newState.loading).toBe(false);
         expect(newState.dailyForecast).toEqual(expectedDailyForecast);
