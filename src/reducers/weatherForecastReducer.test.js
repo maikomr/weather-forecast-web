@@ -4,6 +4,7 @@ import {
     fetchWeatherForecastSuccess,
     fetchWeatherForecastFailure
 } from '../actions/weatherForecastActions';
+import { city, weatherForecast } from '../__mocks__/weatherForecast.mock';
 
 describe('weatherForecastReducer', () => {
     it('should return the initial state', () => {
@@ -16,13 +17,6 @@ describe('weatherForecastReducer', () => {
     });
 
     it('should set loading to false and store the weather forecast on success', () => {
-        const city = { id: 1851632, name: 'Shuzenji' };
-        const list = [
-            { main: { temp: 9.15 }, weather:[{ id: 804 }], dt_txt: '2019-08-15 03:00:00' },
-            { main: { temp: 20.08 }, weather:[{ id: 801 }], dt_txt: '2019-08-15 06:00:00' },
-            { main: { temp: 8.20 }, weather:[{ id: 700 }], dt_txt: '2019-08-15 12:00:00' }
-        ];
-        const weatherForecast = { code: 200, city, list };
         const newState = weatherForecastReducer(undefined, fetchWeatherForecastSuccess(weatherForecast));
         const expectedDailyForecast = [
             { date: '2019-08-15', highTemp: 20.08, lowTemp: 8.2, overallWeather: { id: 804 } }

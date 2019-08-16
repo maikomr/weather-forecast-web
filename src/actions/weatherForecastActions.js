@@ -24,9 +24,8 @@ export const fetchWeatherForecastFailure = error => ({
     payload: { error }
 });
 
-export const fetchWeatherForecast = (cityName) => async (dispatch, getState) => {
+export const fetchWeatherForecast = (cityName, units) => async dispatch => {
     dispatch(fetchWeatherForecastStart());
-    const { units } = getState().weatherForecast;
     const queryParams = queryString.stringify({
         q: cityName,
         units,
@@ -46,3 +45,12 @@ export const setUnits = units => ({
     type: SET_TEMPERATURE_UNITS,
     payload: { units }
 });
+
+export const fetchUnitsIfNeeded = units => async (dispatch, getState) => {
+    const state = getState();
+    const { dailyForecast, city } = state.weatherForecast;
+    if (dailyForecast) {
+        await dispatch(fetchWeatherForecast(city.name, units));
+    }
+    return dispatch(setUnits(units));
+};

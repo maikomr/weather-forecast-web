@@ -9,7 +9,7 @@ const SearchCity = ({ onSubmit, units, onUnitsChange }) => {
 
     const submitForm = e => {
         e.preventDefault();
-        onSubmit(searchText.current.value);
+        onSubmit(searchText.current.value, units);
     };
 
     return (
