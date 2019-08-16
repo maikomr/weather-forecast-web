@@ -2,6 +2,8 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import { UNIT_SYMBOLS } from '../constants/units';
 
+import './Forecast.scss';
+
 const isToday = date => {
     const today = new Date();
     return date.getDate() === today.getDate() 
@@ -20,9 +22,9 @@ const Forecast = ({ forecast: { date, highTemp, lowTemp, overallWeather }, units
     <Card className="text-center">
         <Card.Body>
             <Card.Text>
-                <strong>{`${highTemp}${UNIT_SYMBOLS[units]}`}</strong> 
-                <br />
-                {`${lowTemp}${UNIT_SYMBOLS[units]}`}
+                <span className="high-temp">{`${highTemp}${UNIT_SYMBOLS[units]}`}</span>
+                &nbsp;|&nbsp;
+                <span className="low-temp">{`${lowTemp}${UNIT_SYMBOLS[units]}`}</span>
             </Card.Text>
             <Card.Img
                 src={`/forecast-icons/${overallWeather.icon.replace('n', 'd')}.svg`}

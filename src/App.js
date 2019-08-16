@@ -18,7 +18,7 @@ const App = ({ fetchWeatherForecast, weatherForecast, setUnits }) => {
     return (
         <div className="App">
             <Navbar bg="dark" variant="dark">
-                <Navbar.Brand>Weather Forecast</Navbar.Brand>
+                <Navbar.Brand href="/">Weather Forecast</Navbar.Brand>
                 <SearchCity units={units} onSubmit={fetchWeatherForecast} onUnitsChange={setUnits} />
             </Navbar>
             <Container>

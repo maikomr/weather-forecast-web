@@ -19,7 +19,7 @@ const SearchCity = ({ onSubmit, units, onUnitsChange }) => {
                 <ToggleButton value={UNITS.CELCIUS} variant="light">°C</ToggleButton>
             </ToggleButtonGroup>
             <InputGroup>
-                <FormControl ref={searchText} autoFocus placeholder="Search City..." />
+                <FormControl ref={searchText} autoFocus placeholder="Search city..." />
                 <InputGroup.Append>
                     <Button variant="outline-secondary" type="submit" >
                         <FontAwesomeIcon icon={faSearch} />

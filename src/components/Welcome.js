@@ -8,7 +8,8 @@ import './Welcome.scss';
 const Welcome = () => (
     <Jumbotron className="welcome">
         <div>
-            <h1>Welcome to Weather Forecast</h1>
+            <h3>Welcome to Weather Forecast</h3>
+            <hr />
             <p>
                 This is a simple weather forecast app that display 
                 High and Low temperature values for the next five days.
