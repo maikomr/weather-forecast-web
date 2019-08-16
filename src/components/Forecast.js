@@ -4,6 +4,20 @@ import { UNIT_SYMBOLS } from '../constants/units';
 
 const WEATHER_ICONS_URL = process.env.REACT_APP_WEATHER_ICONS_URL;
 
+const isToday = date => {
+    const today = new Date();
+    return date.getDate() === today.getDate() 
+        && date.getMonth() === today.getMonth() 
+        && date.getFullYear() === today.getFullYear();
+};
+
+const stringifyDate = date => {
+    if (isToday(date)) {
+        return 'Today';
+    }
+    return date.toLocaleString('en-US', { weekday: 'long' });
+};
+
 const Forecast = ({ forecast: { date, highTemp, lowTemp, overallWeather }, units }) => (
     <Card className="text-center">
         <Card.Body>
@@ -21,7 +35,7 @@ const Forecast = ({ forecast: { date, highTemp, lowTemp, overallWeather }, units
             </Card.Text>
         </Card.Body>
         <Card.Footer>
-        <Card.Title>{date}</Card.Title>
+        <Card.Title>{stringifyDate(new Date(date))}</Card.Title>
         </Card.Footer>
     </Card>
 );
