@@ -18,7 +18,7 @@ const SearchCity = ({ onSubmit }) => {
     return (
         <Form onSubmit={submitForm}>
             <InputGroup>
-                <FormControl value={searchText} onChange={handleTextChange} placeholder="Search City..." />
+                <FormControl autoFocus value={searchText} onChange={handleTextChange} placeholder="Search City..." />
                 <InputGroup.Append>
                     <Button variant="outline-secondary" type="submit" >
                         <FontAwesomeIcon icon={faSearch} />
