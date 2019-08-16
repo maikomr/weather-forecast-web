@@ -15,11 +15,12 @@ const App = ({ fetchWeatherForecast, weatherForecast }) => {
     return (
         <div className="App">
             <Navbar bg="dark" variant="dark">
+                <Navbar.Brand>Weather Forecast</Navbar.Brand>
                 <SearchCity onSubmit={fetchWeatherForecast} />
             </Navbar>
             <Container>
                 <Row className="justify-content-md-center">
-                    <Col xs lg="6">
+                    <Col xs lg="8">
                         {!dailyForecast && !error && <Welcome />}
                         {!dailyForecast && error && error.message.includes('404') && <CityNotFound />}
                     </Col>
