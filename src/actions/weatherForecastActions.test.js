@@ -5,12 +5,7 @@ import {
     FETCH_WEATHER_FORECAST_SUCCESS,
     FETCH_WEATHER_FORECAST_FAILURE
 } from '../constants/actionTypes';
-import {
-    fetchWeatherForecastStart,
-    fetchWeatherForecastSuccess,
-    fetchWeatherForecastFailure,
-    fetchWeatherForecast
-} from '../actions/weatherForecastActions';
+import { fetchWeatherForecast } from '../actions/weatherForecastActions';
 import { initialState } from '../reducers/weatherForecastReducer';
 import axiosMock from 'axios';
 
