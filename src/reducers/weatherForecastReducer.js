@@ -14,24 +14,28 @@ export const initialState = {
 const MID_DAY_TIME = '12:00:00';
 
 const getDailyForecast = records => {
-    const dailyForecast = {};
+    const dailyForecastObj = {};
     records.forEach(({ dt_txt, main: { temp }, weather }) => {
         const [ date, time ] = dt_txt.split(' ');
-        if (dailyForecast.hasOwnProperty(date)) {
-            const currentDay = dailyForecast[date];
+        if (dailyForecastObj.hasOwnProperty(date)) {
+            const currentDay = dailyForecastObj[date];
             currentDay.lowTemp = Math.min(currentDay.lowTemp, temp);
             currentDay.highTemp = Math.max(currentDay.highTemp, temp);
             if (time === MID_DAY_TIME) {
                 currentDay.overallWeather = weather[0];
             }
         } else {
-            dailyForecast[date] = {
+            dailyForecastObj[date] = {
                 lowTemp: temp,
                 highTemp: temp
             };
         }
     });
-    return dailyForecast;
+    const dailyForecastArr = [];
+    for (const date in dailyForecastObj) {
+        dailyForecastArr.push({...dailyForecastObj[date], date })
+    }
+    return dailyForecastArr;
 };
 
 const weatherForecastReducer = (state = initialState, action) => {

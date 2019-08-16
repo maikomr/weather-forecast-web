@@ -14,9 +14,9 @@ const mockStore = configureMockStore(middlewares);
 
 describe('fetchWeatherForecast', () => {
     let store;
+    const cityName = 'Shuzenji';
 
     it('calls FETCH_WEATHER_FORECAST_START and FETCH_WEATHER_FORECAST_SUCCESS', async () => {
-        const cityName = 'Shuzenji';
         const weatherForecast = { code: 200, city: { id: 1851632, name: cityName } };
 
         axiosMock.mockImplementationOnce(() => Promise.resolve({ data: weatherForecast }));
@@ -32,8 +32,7 @@ describe('fetchWeatherForecast', () => {
     });
 
     it('calls FETCH_WEATHER_FORECAST_START and FETCH_WEATHER_FORECAST_FAILURE', async () => {
-        const cityName = 'Shuzenji';
-        const error = new Error("test error");
+        const error = new Error('test error');
 
         axiosMock.mockImplementationOnce(() => Promise.reject(error));
 
