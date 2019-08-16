@@ -30,7 +30,7 @@ const Forecast = ({ forecast: { date, highTemp, lowTemp, overallWeather }, units
                 <img className="temp-icon" src={lowTempIcon} alt="Low temperature" />&nbsp;
                 <span className="low-temp">{`${lowTemp}${UNIT_SYMBOLS[units]}`}</span>
             </Card.Text>
-            <Card.Img
+            <Card.Img data-test-id="weather-icon"
                 src={`/forecast-icons/${overallWeather.icon.replace('n', 'd')}.svg`}
                 alt={overallWeather.description}
             />

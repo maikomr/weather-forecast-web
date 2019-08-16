@@ -13,13 +13,19 @@ const SearchBar = ({ onSubmit, units, onUnitsChange }) => {
     };
 
     return (
-        <Form onSubmit={submitForm} inline className="ml-auto">
-            <ToggleButtonGroup type="radio" name="options" value={units} onChange={onUnitsChange}>
+        <Form onSubmit={submitForm} inline className="ml-auto" data-test-id="search-bar-form">
+            <ToggleButtonGroup 
+                data-test-id="unit-selector"
+                type="radio"
+                name="options"
+                value={units}
+                onChange={onUnitsChange}
+            >
                 <ToggleButton value={UNITS.FAHRENHEIT} variant="light">°F</ToggleButton>
                 <ToggleButton value={UNITS.CELCIUS} variant="light">°C</ToggleButton>
             </ToggleButtonGroup>
             <InputGroup>
-                <FormControl ref={searchText} autoFocus placeholder="Search city..." />
+                <FormControl ref={searchText} autoFocus placeholder="Search city..." data-test-id="search-input"/>
                 <InputGroup.Append>
                     <Button variant="outline-secondary" type="submit" >
                         <FontAwesomeIcon icon={faSearch} />

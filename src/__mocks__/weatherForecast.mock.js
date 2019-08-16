@@ -9,5 +9,5 @@ export const list = [
 export const weatherForecast = { code: 200, city, list };
 
 export const dailyForecast = [
-    { date: '2019-08-15', highTemp: 20.08, lowTemp: 8.2, overallWeather: { id: 804 } }
+    { date: '2019-08-15', highTemp: 20.08, lowTemp: 8.2, overallWeather: { id: 804, icon: '01n' } }
 ];
