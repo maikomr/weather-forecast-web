@@ -8,7 +8,7 @@ import {
 } from '../constants/actionTypes';
 
 const OPEN_WEATHER_API_KEY = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
-const FIVE_DAYS_URL = process.env.REACT_APP_FIVE_DAYS_URL;
+const FIVE_DAYS_URL = 'https://api.openweathermap.org/data/2.5/forecast';
 
 export const fetchWeatherForecastStart = () => ({
     type: FETCH_WEATHER_FORECAST_START
