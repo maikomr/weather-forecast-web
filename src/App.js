@@ -6,12 +6,14 @@ import DailyForecast from './components/DailyForecast';
 import Welcome from './components/Welcome';
 import CityNotFound from './components/CityNotFound';
 import Loading from './components/Loading';
+import CityInfo from './components/CityInfo';
+
 import { fetchWeatherForecast, setUnits } from './actions/weatherForecastActions';
 
 import './App.scss';
 
 const App = ({ fetchWeatherForecast, weatherForecast, setUnits }) => {
-    const { dailyForecast, error, loading, units } = weatherForecast;
+    const { city, dailyForecast, error, loading, units } = weatherForecast;
     const currentYear = new Date().getFullYear();
     return (
         <div className="App">
@@ -26,11 +28,22 @@ const App = ({ fetchWeatherForecast, weatherForecast, setUnits }) => {
                         {error && error.message.includes('404') && !loading && <CityNotFound />}
                     </Col>
                 </Row>
-                <Row className="justify-content-md-center">
-                    <Col xs>
-                        {!loading && dailyForecast && <DailyForecast dailyForecast={dailyForecast} units={units} />}
-                    </Col>
-                </Row>
+                {!loading && city && (
+                    <Row className="city-info">
+                        <Col xs lg="auto">
+                            {!loading && dailyForecast &&(
+                                <CityInfo city={city} />
+                            )}
+                        </Col>
+                    </Row>
+                )}
+                {!loading && dailyForecast && (
+                    <Row className="justify-content-md-center">
+                        <Col xs>
+                            <DailyForecast dailyForecast={dailyForecast} units={units} />
+                        </Col>
+                    </Row>
+                )}
                 <Row className="justify-content-md-center">
                     <Col xs>
                         {loading && <Loading />}
