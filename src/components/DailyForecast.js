@@ -1,13 +1,12 @@
 import React from 'react';
+import Forecast from './Forecast';
 
 const DailyForecast = ({ dailyForecast = [] }) => (
-    <ul>
+    <div>
         {dailyForecast.map(forecast => (
-            <li key={forecast.date}>
-                <span>{forecast.date}</span> |  <strong>{`${forecast.highTemp}°C`}</strong> / {`${forecast.lowTemp}°C`}
-            </li>
+            <Forecast key={forecast.date} forecast={forecast} />
         ))}
-    </ul>
+    </div>
 );
 
 export default DailyForecast;
